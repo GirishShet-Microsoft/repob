@@ -1,10 +1,4 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- main
+trigger: none
 
 pr:
   branches:
@@ -14,9 +8,10 @@ pr:
 pool:
   vmImage: ubuntu-latest
 
-steps: 
-- script: | 
-    echo "Pipeline triggered successfully" 
-    echo "Build.SourceVersionMessage:" 
-    echo "$(Build.SourceVersionMessage)" 
-  displayName: Test Pipeline
+steps:
+- script: |
+    echo "PR validation pipeline"
+    echo "Build.Reason=$(Build.Reason)"
+    echo "Build.SourceBranch=$(Build.SourceBranch)"
+    echo "Build.SourceVersion=$(Build.SourceVersion)"
+    echo "Build.SourceVersionMessage=$(Build.SourceVersionMessage)"
